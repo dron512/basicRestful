@@ -1,4 +1,4 @@
-package com.pmh.ex04.user;
+package com.pmh.ex08.user;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,15 +1,16 @@
-package com.pmh.ex04.user;
+package com.pmh.ex08.util;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-public class AuditorAwareImpl implements AuditorAware<String> {
+public class UserAwareImpl implements AuditorAware<String> {
+
     @Override
     public Optional<String> getCurrentAuditor() {
+        //Todo JWT 작성자 들어가야함
         return Optional.of("박명회");
     }
 }

@@ -1,5 +1,7 @@
 package com.pmh.ex04.user;
 
+import com.pmh.ex04.error.BizException;
+import com.pmh.ex04.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +35,14 @@ public class UserService {
                     .name(userRequestDto.getName())
                     .email(userRequestDto.getEmail())
                     .build();
+            User dbUser = userRepository.findById(userRequestDto.getId()).orElseThrow(() -> new BizException(ErrorCode.USER_NOT_FOUND, userRequestDto.getId()));
         }
         User dBUser = userRepository.save(user);
         return dBUser;
     }
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        User dbUser = userRepository.findById(id).orElseThrow(() -> new BizException(ErrorCode.USER_NOT_FOUND, id));
+        userRepository.delete(dbUser);
     }
 }
