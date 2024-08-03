@@ -1,4 +1,4 @@
-package com.pmh.ex08.user;
+package com.pmh.ex08.freeboard;
 
 import com.pmh.ex08.util.BaseEntity;
 import jakarta.persistence.*;
@@ -12,23 +12,30 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
 @Setter
-@Builder
+@Getter
+@ToString
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class User extends BaseEntity {
+public class FreeBoard extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
-    private String name;
+    @Column(nullable = false,length = 100)
+    private String title;
 
-    @Column(length = 100)
-    private String email;
+    @Column(nullable = false,length = 1000)
+    private String content;
 
+    @Column(nullable = false,length = 50)
+    private String author;
+
+    @Builder
+    public FreeBoard(String title, String content, String author) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
 }
