@@ -1,9 +1,14 @@
 package com.pmh.ex10.user;
 
 import com.pmh.ex10.common.BaseEntity;
+import com.pmh.ex10.freeboard.FreeBoard;
+import com.pmh.ex10.user.userprofile.UserProfile;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +17,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @Setter
 @Builder
+//@ToString
 @EntityListeners(AuditingEntityListener.class)
 public class User extends BaseEntity {
 
@@ -33,4 +39,21 @@ public class User extends BaseEntity {
                 ", email='" + email + '\'' +
                 "} " + super.toString();
     }
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private UserProfile userProfile;
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER
+            ,cascade = CascadeType.ALL
+            ,orphanRemoval = true)
+    private List<FreeBoard> list;
+
+
+    @ManyToMany
+    @JoinTable(
+            name="user_freeboard_likes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "freeboard_id")
+    )
+    private List<FreeBoard> likedFreeBoards = new ArrayList<>();
 }
