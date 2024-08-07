@@ -1,0 +1,30 @@
+spring:
+  # DB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.201.102.114:3306/pmh?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+  # data.sql ?? ??
+  sql:
+    init:
+      # always never
+      mode: always
+
+  # jpa
+  jpa:
+    show-sql: true
+    hibernate:
+      # crate create-drop update validate none
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    defer-datasource-initialization: true
+
+
+mh:
+  token:
+    key: mykeymykeymykeymykeymykeymykeymykeymykeymykeymykeymykey

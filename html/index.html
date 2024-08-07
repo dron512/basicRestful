@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="doReq();">통신시작</button>
+    <div>
+        <input type="text" name="" id="name" value="홍길동">
+        <input type="text" name="" id="email" value="aaa@naver.com">
+        <button onclick="doLogin()">로그인</button>
+    </div>
+    <div id="aaa">
+
+    </div>
+</body>
+
+</html>
+<script>
+    const doReq = () => {
+        const url = "http://43.201.102.114:8080/user/select/2";
+        const token = localStorage.getItem('token');
+
+        fetch(url, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(result => {
+                console.log(result);
+                document.getElementById('aaa').innerHTML=JSON.stringify(result.list);
+            })
+    }
+    const doLogin = () => {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const url = `http://43.201.102.114:8080/login?name=${name}&email=${email}`;
+        fetch(url)
+            .then(data => {
+                return data.text();
+            })
+            .then(result => {
+                console.log(result);
+                localStorage.setItem('token',result);
+            })
+    }
+</script>
