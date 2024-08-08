@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-springboot
+  namespace: default
+  labels:
+    app: my-springboot
+spec:
+  selector:
+    matchLabels:
+      app: my-springboot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-springboot
+    spec:
+      containers:
+      - name: my-springboot
+        image: parkmyounghoi/restful
+        env:
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: password
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://10.100.223.91:3306/pmh
+        ports:
+        - containerPort:  8080
+          name: my-springboot

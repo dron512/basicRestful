@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-springboot
+  namespace: default
+spec:
+  selector:
+    app: my-springboot
+  type: NodePort
+  ports:
+  - name: my-springboot
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30010
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+    # nodePort: 
