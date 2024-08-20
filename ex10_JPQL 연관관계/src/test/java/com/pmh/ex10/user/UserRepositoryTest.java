@@ -50,17 +50,25 @@ class UserRepositoryTest {
     }
 
     @Test
-    void oneTooneTest(){
+    void oneToOneCascadeTest(){
         Optional<User> user = userRepository.findByName("홍길동");
 
+        User dbUser = user.get();
+
         UserProfile userProfile = UserProfile.builder()
-                .address("대구")
-                .phoneNumber("01012341234")
+                .address("부산")
+                .phoneNumber("01099994444")
                 .user(user.get())
                 .build();
 
-        userProfileRepository.save(userProfile);
+        dbUser.setUserProfile(userProfile);
 
+        userRepository.save(dbUser);
+    }
+
+    @Test
+    void oneToOneOrphanRemovalTest(){
+        Optional<User> user = userRepository.findByName("홍길동");
         userRepository.delete(user.get());
     }
 
@@ -73,23 +81,36 @@ class UserRepositoryTest {
     }
 
     @Test
-    void oneTomanyCascadeTest(){
+    void oneTomanyOrphanRemovalTest(){
         User user = userRepository.findById(2l).orElseThrow();
+
+        userRepository.delete(user);
+    }
+
+    @Test
+    void oneTomanyCascadeTest(){
+        User user = userRepository.findById(3l).orElseThrow();
 
         List<FreeBoard> list = user.getList();
 
         list.add(
                 FreeBoard.builder()
-                        .title("새로운글")
-                        .content("새로운 테스트")
-                        .author("새로운사람")
+                        .title("새로운글1111")
+                        .content("새로운 테스트111")
+                        .author("새로운사람111")
                         .user(user)
                 .build());
+        list.add(
+                FreeBoard.builder()
+                        .title("새로운글222")
+                        .content("새로운 테스트222")
+                        .author("새로운사람222")
+                        .user(user)
+                        .build());
 
-        list.remove(1);
+//        list.remove(1);
 
         userRepository.save(user);
-
     }
 
 
