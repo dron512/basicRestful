@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ex01/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex01/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex02_chapter2chapter3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex02_chapter2chapter3/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex03_componentscan/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex03_componentscan/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex04_UserMVC/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex05_기본테스트/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex06_JPA/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ex07_에러코드/src/main/java" charset="UTF-8" />
+  </component>
+</project>

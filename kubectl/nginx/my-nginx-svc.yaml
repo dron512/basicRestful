@@ -6,9 +6,10 @@ metadata:
 spec:
   selector:
     app: my-nginx
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: my-nginx
     protocol: TCP
     port: 80
     targetPort: 80
+    
