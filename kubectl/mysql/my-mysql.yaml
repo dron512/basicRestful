@@ -22,5 +22,12 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: password
         ports:
-        - containerPort:  3306
+        - containerPort: 3306
           name: my-mysql
+        volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql
+    volumes:
+    - name: mysql-volume
+      persistentVolumeClaim:
+        claimName: mysql-pvc
