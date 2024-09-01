@@ -10,14 +10,14 @@ spring:
   sql:
     init:
       # always never
-      mode: always
+      mode: never
 
   # jpa
   jpa:
     show-sql: true
     hibernate:
       # crate create-drop update validate none
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect

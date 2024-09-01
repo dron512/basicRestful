@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  my-mysql
+  name: my-mysql
   namespace: default
   labels:
-    app:  my-mysql
+    app: my-mysql
 spec:
   selector:
     matchLabels:
@@ -13,14 +13,21 @@ spec:
   template:
     metadata:
       labels:
-        app:  my-mysql
+        app: my-mysql
     spec:
       containers:
-      - name:  my-mysql
-        image:  mysql
+      - name: my-mysql
+        image: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: 1234
+          value: password
         ports:
-        - containerPort:  3306
-          name:  my-mysql
+        - containerPort: 3306
+          name: my-mysql
+        volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-volume
+        persistentVolumeClaim:
+          claimName: mysql-pvc

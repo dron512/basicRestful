@@ -40,6 +40,8 @@ public class User extends BaseEntity {
                 "} " + super.toString();
     }
 
+    // cascade.ALL 은 USER객체 변경시에 USERPROFILE객체도 변경하겠다...
+    // orphanRemoval user객체 삭제시에 USERPROFILE 같이 삭제하겠다...
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserProfile userProfile;
 
