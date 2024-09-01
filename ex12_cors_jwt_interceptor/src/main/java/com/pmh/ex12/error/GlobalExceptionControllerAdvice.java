@@ -20,7 +20,7 @@ public class GlobalExceptionControllerAdvice {
 
         ErrorResponse errorResponse = new ErrorResponse(bizException.getErrorCode(),bizException.getMessage(), LocalDateTime.now());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        return ResponseEntity.status(bizException.getErrorCode().getCode()).body(errorResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
