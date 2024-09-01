@@ -1,3 +1,4 @@
 docker build -t restfulapi .
 docker tag restfulapi parkmyounghoi/restful
+docker push parkmyounghoi/restful
 docker run -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql-container:3306/pmh -e SPRING_DATASOURCE_PASSWORD=1234 -d --network javamysql --name java-container parkmyounghoi/restful
