@@ -2,7 +2,7 @@ spring:
   # DB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://43.201.102.114:3306/pmh?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/pmh?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: 1234
 
@@ -23,7 +23,6 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
     defer-datasource-initialization: true
-
 
 mh:
   token:
