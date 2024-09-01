@@ -34,7 +34,7 @@ public class LoginController {
 
     @GetMapping("login")
     public ResponseEntity<String> login(@RequestParam("name") String name, @RequestParam("email") String email){
-        User user = userRepository.findByNameOrEmail(name,email).orElseThrow(
+        User user = userRepository.findByNameAndEmail(name,email).orElseThrow(
                 () -> new BizException(ErrorCode.INCORRECT_NAME_AND_EMAIL)
         );
         return ResponseEntity.ok(tokenManager.generateToken(user));
