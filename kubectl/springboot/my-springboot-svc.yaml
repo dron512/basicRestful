@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: my-springboot
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: my-springboot
     protocol: TCP
