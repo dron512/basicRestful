@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ex08_자유게시판" />
+    <file type="web" url="file://$PROJECT_DIR$/ex09_스웨거" />
+    <file type="web" url="file://$PROJECT_DIR$/ex10_JPQL 연관관계" />
+    <file type="web" url="file://$PROJECT_DIR$/ex11_querydsl" />
+    <file type="web" url="file://$PROJECT_DIR$/ex12_cors_jwt_interceptor" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

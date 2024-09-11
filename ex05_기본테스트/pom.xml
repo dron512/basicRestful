@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pmh</groupId>
-	<artifactId>ex04</artifactId>
+	<artifactId>ex05</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ex04</name>
+	<name>ex05</name>
 	<description>basicUser</description>
 	<url/>
 	<licenses>
