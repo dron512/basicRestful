@@ -4,6 +4,9 @@ import com.pmh.ex12.error.BizException;
 import com.pmh.ex12.error.ErrorCode;
 import com.pmh.ex12.user.User;
 import com.pmh.ex12.user.UserRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,9 @@ public class FreeBoardService {
     private final FreeBoardRepository freeBoardRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+
+    @PersistenceContext
+    private final EntityManager entityManager;
 
     public List<FreeBoard> findAll() {
         List<FreeBoard> list = freeBoardRepository.findAll();
@@ -46,9 +52,15 @@ public class FreeBoardService {
     }
 
     public void deleteById(Long id) {
-        freeBoardRepository.findById(id).orElseThrow(
-                ()->new BizException(ErrorCode.NOT_FOUND, id)
+        FreeBoard dbFreeBoard = freeBoardRepository.findById(id).orElseThrow(
+                () -> new BizException(ErrorCode.NOT_FOUND, id)
         );
-        freeBoardRepository.deleteById(id);
+
+        if (dbFreeBoard.getUser() != null) {
+            dbFreeBoard.getUser().getList().remove(dbFreeBoard);
+            dbFreeBoard.setUser(null);
+        }
+
+        freeBoardRepository.delete(dbFreeBoard);
     }
 }

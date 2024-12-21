@@ -34,4 +34,5 @@ public interface UserRepository extends JpaRepository<User,Long>, QuerydslPredic
     // select * from uers where name like '%name%' order by id desc
     List<User> findByNameContainingOrderByIdDesc(String name);
 
+    Optional<User> findByEmail(String email);
 }

@@ -12,6 +12,7 @@ public enum ErrorCode {
     VALIDITY_PERIOD_EXPIRED(HttpStatus.UNAUTHORIZED,"VALIDITY_PERIOD_EXPIRED"),
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED,"INVALID_TOKEN"),
     NEED_TOKEN(HttpStatus.UNAUTHORIZED,"NEED_TOKEN"),
+    EMAIL_DUPLICATE(HttpStatus.BAD_REQUEST,"EMAIL_DUPLICATE email %s"),
     ;
 
     private final HttpStatus code;

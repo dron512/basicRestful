@@ -27,8 +27,6 @@ class UserRepositoryTest {
                 .where(qUser.name.contains("길동"))
                 .fetch();
 
-        System.out.println(list);
-
         Assertions.assertThat(list).hasSize(3);
         Assertions.assertThat(list.get(0).getName()).contains("길동");
         Assertions.assertThat(list.get(1).getName()).contains("길동");

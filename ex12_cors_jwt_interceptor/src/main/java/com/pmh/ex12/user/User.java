@@ -29,7 +29,7 @@ public class User extends BaseEntity {
     @Column(length = 100)
     private String name;
 
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     private String email;
 
     @Override

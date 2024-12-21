@@ -26,6 +26,10 @@ public class UserService {
         User user = null;
         User dbUser = null;
         if(userRequestDto.getId()==0) {
+            dbUser = userRepository.findByEmail(userRequestDto.getEmail()).orElse(null);
+            if(dbUser!=null)
+                throw new BizException(ErrorCode.EMAIL_DUPLICATE, userRequestDto.getEmail());
+
             user = User.builder()
                     .name(userRequestDto.getName())
                     .email(userRequestDto.getEmail())
