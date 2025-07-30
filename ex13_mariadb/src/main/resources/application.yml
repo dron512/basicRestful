@@ -1,0 +1,29 @@
+spring:
+  # DB
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://svc.sel4.cloudtype.app:30307/freeboard?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+  # data.sql ?? ??
+  sql:
+    init:
+      # always never
+      mode: always
+
+  # jpa
+  jpa:
+    show-sql: true
+    hibernate:
+      # crate create-drop update validate none
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        format_sql: true
+    defer-datasource-initialization: true
+
+mh:
+  token:
+    key: mykeymykeymykeymykeymykeymykeymykeymykeymykeymykeymykey
